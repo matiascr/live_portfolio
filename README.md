@@ -1,5 +1,18 @@
 # LivePortfolio
 
+### A customizable Portfolio in liveview.
+
+Features:
+  - [ ] Content Cards
+  - [ ] Attached to database
+  - [ ] Created from JSON
+  - [ ] Export to JSON
+  - [ ] Searchable
+  - [ ] Reactive search
+  - [ ] Live update
+
+---
+
 To start your Phoenix server:
 
   * Run `mix setup` to install and setup dependencies
