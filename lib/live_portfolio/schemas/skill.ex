@@ -7,7 +7,8 @@ defmodule LivePortfolio.Skill do
     field :description, :string
     field :title, :string
     field :references, {:array, :string}
-    field :images, {:array, :integer}
+
+    embeds_many :images, LivePortfolio.Image
 
     timestamps()
   end

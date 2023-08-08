@@ -8,7 +8,8 @@ defmodule LivePortfolio.Achievement do
     field :title, :string
     field :references, {:array, :string}
     field :skills, {:array, :string}
-    field :images, {:array, :integer}
+
+    embeds_many :images, LivePortfolio.Image
 
     timestamps()
   end

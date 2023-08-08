@@ -9,8 +9,9 @@ defmodule LivePortfolio.Experience do
     field :company, :string
     field :date_start, :date
     field :date_end, :date
-    field :images, {:array, :integer}
     field :skills, {:array, :integer}
+
+    embeds_many :images, LivePortfolio.Image
 
     timestamps()
   end
@@ -18,7 +19,25 @@ defmodule LivePortfolio.Experience do
   @doc false
   def changeset(experience, attrs) do
     experience
-    |> cast(attrs, [:title, :company, :description, :date_start, :date_end, :images, :references, :skills])
-    |> validate_required([:title, :company, :description, :date_start, :date_end, :images, :references, :skills])
+    |> cast(attrs, [
+      :title,
+      :company,
+      :description,
+      :date_start,
+      :date_end,
+      :images,
+      :references,
+      :skills
+    ])
+    |> validate_required([
+      :title,
+      :company,
+      :description,
+      :date_start,
+      :date_end,
+      :images,
+      :references,
+      :skills
+    ])
   end
 end

@@ -10,8 +10,9 @@ defmodule LivePortfolio.Education do
     field :courses, {:array, :string}
     field :date_end, :date
     field :date_start, :date
-    field :images, {:array, :integer}
     field :skills, {:array, :string}
+
+    embeds_many :images, LivePortfolio.Image
 
     timestamps()
   end
@@ -19,7 +20,27 @@ defmodule LivePortfolio.Education do
   @doc false
   def changeset(education, attrs) do
     education
-    |> cast(attrs, [:title, :description, :institution, :courses, :date_end, :date_start, :images, :references, :skills])
-    |> validate_required([:title, :description, :institution, :courses, :date_end, :date_start, :images, :references, :skills])
+    |> cast(attrs, [
+      :title,
+      :description,
+      :institution,
+      :courses,
+      :date_end,
+      :date_start,
+      :images,
+      :references,
+      :skills
+    ])
+    |> validate_required([
+      :title,
+      :description,
+      :institution,
+      :courses,
+      :date_end,
+      :date_start,
+      :images,
+      :references,
+      :skills
+    ])
   end
 end
