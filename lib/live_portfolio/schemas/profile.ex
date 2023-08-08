@@ -1,4 +1,4 @@
-defmodule LivePortfolio.Person do
+defmodule LivePortfolio.Profile do
   @moduledoc false
 
   use Ecto.Schema
@@ -13,7 +13,7 @@ defmodule LivePortfolio.Person do
           background: String.t() | nil
         }
 
-  schema "persons" do
+  schema "profiles" do
     field :name, :string
     field :location, :string
     field :references, {:map, :string}
@@ -26,8 +26,8 @@ defmodule LivePortfolio.Person do
   end
 
   @doc false
-  def changeset(person, attrs) do
-    person
+  def changeset(profile, attrs) do
+    profile
     |> cast(attrs, [:name, :surname, :background, :image, :location, :references])
     |> validate_required([:name, :surname, :background, :image, :location, :references])
   end
