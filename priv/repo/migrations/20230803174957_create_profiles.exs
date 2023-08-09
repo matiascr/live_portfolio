@@ -3,12 +3,10 @@ defmodule LivePortfolio.Repo.Migrations.CreateProfiles do
 
   def change do
     create table(:profiles) do
+      add :background, :string
+      add :location, :string
       add :name, :string
       add :surname, :string
-      add :background, :string
-      add :image, :map
-      add :location, :string
-      add :references, {:map, :string}
 
       timestamps()
     end

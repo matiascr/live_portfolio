@@ -5,10 +5,7 @@ defmodule LivePortfolio.Repo.Migrations.CreateAchievements do
     create table(:achievements) do
       add :date, :date
       add :description, :string
-      add :references, {:array, :string}
       add :title, :string
-      add :skills, {:array, :string}
-      add :images, :map
 
       timestamps()
     end

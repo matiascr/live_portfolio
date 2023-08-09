@@ -9,9 +9,6 @@ defmodule LivePortfolio.Repo.Migrations.CreateEducations do
       add :courses, {:array, :string}
       add :date_end, :date
       add :date_start, :date
-      add :images, :map
-      add :references, {:array, :string}
-      add :skills, {:array, :string}
 
       timestamps()
     end

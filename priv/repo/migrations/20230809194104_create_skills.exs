@@ -3,11 +3,12 @@ defmodule LivePortfolio.Repo.Migrations.CreateSkills do
 
   def change do
     create table(:skills) do
-      add :title, :string
       add :description, :string
-      add :level, :string
-      add :images, :map
-      add :references, {:array, :string}
+      add :title, :string
+
+      add :achievement_id, references(:achievements)
+      add :education_id, references(:educations)
+      add :experience_id, references(:experiences)
 
       timestamps()
     end

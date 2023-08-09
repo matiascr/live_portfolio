@@ -8,9 +8,6 @@ defmodule LivePortfolio.Repo.Migrations.CreateExperiences do
       add :description, :string
       add :date_start, :date
       add :date_end, :date
-      add :images, :map
-      add :references, {:array, :string}
-      add :skills, {:array, :integer}
 
       timestamps()
     end
