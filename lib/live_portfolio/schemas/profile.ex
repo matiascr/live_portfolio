@@ -3,24 +3,25 @@ defmodule LivePortfolio.Profile do
 
   use Ecto.Schema
   import Ecto.Changeset
+  alias LivePortfolio.{Image, Reference}
 
   @type t :: %__MODULE__{
-          name: String.t() | nil,
+          background: String.t() | nil,
           location: String.t() | nil,
-          image: integer() | nil,
-          references: list(String.t()) | nil,
+          name: String.t() | nil,
           surname: String.t() | nil,
-          background: String.t() | nil
+          images: list(Image.t()),
+          references: list(Reference.t())
         }
 
   schema "profiles" do
-    field :name, :string
-    field :location, :string
-    field :references, {:map, :string}
-    field :surname, :string
     field :background, :string
+    field :location, :string
+    field :name, :string
+    field :surname, :string
 
-    embeds_one :image, LivePortfolio.Image
+    has_many :images, Image
+    has_many :references, Reference
 
     timestamps()
   end
@@ -28,7 +29,7 @@ defmodule LivePortfolio.Profile do
   @doc false
   def changeset(profile, attrs) do
     profile
-    |> cast(attrs, [:name, :surname, :background, :image, :location, :references])
-    |> validate_required([:name, :surname, :background, :image, :location, :references])
+    |> cast(attrs, [:background, :location, :name, :surname, :images, :references])
+    |> validate_required([:background, :location, :name, :surname, :images, :references])
   end
 end

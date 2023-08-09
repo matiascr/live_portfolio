@@ -1,18 +1,33 @@
 defmodule LivePortfolio.Education do
+  @moduledoc false
+
   use Ecto.Schema
   import Ecto.Changeset
+  alias LivePortfolio.{Image, Reference, Skill}
+
+  @type t :: %__MODULE__{
+          courses: list(String.t()),
+          date_end: Date.t(),
+          date_start: Date.t(),
+          description: String.t(),
+          institution: String.t(),
+          title: String.t(),
+          images: list(Image.t()),
+          references: list(Reference.t()),
+          skills: list(Skill.t())
+        }
 
   schema "educations" do
-    field :description, :string
-    field :title, :string
-    field :references, {:array, :string}
-    field :institution, :string
     field :courses, {:array, :string}
     field :date_end, :date
     field :date_start, :date
-    field :skills, {:array, :string}
+    field :description, :string
+    field :institution, :string
+    field :title, :string
 
-    embeds_many :images, LivePortfolio.Image
+    has_many :images, Image
+    has_many :references, Reference
+    has_many :skills, Skill
 
     timestamps()
   end
@@ -21,23 +36,23 @@ defmodule LivePortfolio.Education do
   def changeset(education, attrs) do
     education
     |> cast(attrs, [
-      :title,
-      :description,
-      :institution,
       :courses,
       :date_end,
       :date_start,
+      :description,
+      :institution,
+      :title,
       :images,
       :references,
       :skills
     ])
     |> validate_required([
-      :title,
-      :description,
-      :institution,
       :courses,
       :date_end,
       :date_start,
+      :description,
+      :institution,
+      :title,
       :images,
       :references,
       :skills

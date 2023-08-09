@@ -1,17 +1,31 @@
 defmodule LivePortfolio.Experience do
+  @moduledoc false
+
   use Ecto.Schema
   import Ecto.Changeset
+  alias LivePortfolio.{Image, Reference, Skill}
+
+  @type t :: %__MODULE__{
+          company: String.t(),
+          date_end: Date.t(),
+          date_start: Date.t(),
+          description: String.t(),
+          title: String.t(),
+          images: list(Image.t()),
+          references: list(Reference.t()),
+          skills: list(Skill.t())
+        }
 
   schema "experiences" do
+    field :company, :string
+    field :date_end, :date
+    field :date_start, :date
     field :description, :string
     field :title, :string
-    field :references, {:array, :string}
-    field :company, :string
-    field :date_start, :date
-    field :date_end, :date
-    field :skills, {:array, :integer}
 
-    embeds_many :images, LivePortfolio.Image
+    has_many :images, Image
+    has_many :references, Reference
+    has_many :skills, Skill
 
     timestamps()
   end
