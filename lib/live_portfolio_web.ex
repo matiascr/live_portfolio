@@ -87,6 +87,9 @@ defmodule LivePortfolioWeb do
       import LivePortfolioWeb.CoreComponents
       import LivePortfolioWeb.Gettext
 
+      # Custom UI Components and helpers
+      alias LivePortfolioWeb.Layout
+
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
 
