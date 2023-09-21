@@ -1,27 +1,17 @@
 defmodule LivePortfolioWeb.PageController do
   use LivePortfolioWeb, :controller
-  import Ecto.Query
   alias LivePortfolio.{Repo, Profile}
 
   def home(conn, _params) do
-    {full_name, references} =
-      Profile
-      |> Repo.one()
-      |> Repo.preload(:references)
-      |> case do
-        nil ->
-          {nil, nil}
+    profile = Repo.one(Profile) |> Repo.preload(:references)
 
-        %Profile{name: name, surname: surname, references: refs} ->
-          {Enum.join([name, surname], " "), refs} |> dbg()
-      end
+    if profile == nil, do: raise(LivePortfolioWeb.DatabaseEmptyError, "no profile found")
+
+    full_name = Enum.join([profile.name, profile.surname], " ")
 
     render(conn, :timeline,
       page_title: full_name,
-      full_name: full_name,
-      references: references
+      full_name: full_name
     )
-
-    # render(conn, :home, layout: false)
   end
 end

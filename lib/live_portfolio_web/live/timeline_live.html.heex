@@ -1,0 +1,5 @@
+<ul>
+  <%= for e <- @entries do %>
+    <li><.live_component module={LivePortfolioWeb.EntryComponent} id={e.title} entry={e} /></li>
+  <% end %>
+</ul>

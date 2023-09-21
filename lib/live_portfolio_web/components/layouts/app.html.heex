@@ -1,9 +1,7 @@
-<body class="bg-white antialiased dark:bg_black">
-  <Layout.header references={ @references }>
-    <%= @full_name || "Empty Portfolio" %>
+<body>
+  <Layout.header>
+    <%= live_render(@conn, LivePortfolioWeb.HeaderLive) %>
   </Layout.header>
-  <Layout.main>
-    <%= @inner_content %>
-  </Layout.main>
-  <Layout.footer />
+  <%= @inner_content %>
+  <Layout.footer full_name={@full_name} />
 </body>

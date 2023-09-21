@@ -35,3 +35,4 @@ live_portfolio-*.tar
 npm-debug.log
 /assets/node_modules/
 
+lib/live_portfolio_web/components/layouts/root.html.heex

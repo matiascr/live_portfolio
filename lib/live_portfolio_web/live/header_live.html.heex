@@ -1,0 +1,14 @@
+<div>
+  <div>
+    <a href="/">
+      <%= @title_name %>
+    </a>
+  </div>
+  <div>
+    <%= for ref <- @profile.references do %>
+      <a href={ref.link}>
+        <%= ref.title %>
+      </a>
+    <% end %>
+  </div>
+</div>
