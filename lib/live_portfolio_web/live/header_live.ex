@@ -8,7 +8,8 @@ defmodule LivePortfolioWeb.HeaderLive do
 
     {:ok,
      assign(socket,
-       title_name: abbreviate_full_name(profile.name, profile.surname),
+       title_name: Enum.join([profile.name, profile.surname], " "),
+       title_name_abbr: abbreviate_full_name(profile.name, profile.surname),
        profile: profile
      )}
   end
