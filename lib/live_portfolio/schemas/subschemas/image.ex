@@ -1,4 +1,6 @@
 defmodule LivePortfolio.Image do
+  @moduledoc false
+
   use Ecto.Schema
   alias LivePortfolio.{Achievement, Education, Experience, Profile, Skill}
 
