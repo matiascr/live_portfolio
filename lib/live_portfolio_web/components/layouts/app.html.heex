@@ -1,7 +1,9 @@
-<body>
+<body class="flex flex-col h-screen justify-between px-4">
   <Layout.header>
     <%= live_render(@conn, LivePortfolioWeb.HeaderLive) %>
   </Layout.header>
-  <%= @inner_content %>
-  <Layout.footer full_name={@full_name} />
+  <Layout.main>
+    <%= @inner_content %>
+  </Layout.main>
+  <Layout.footer full_name={@abbr_name} />
 </body>

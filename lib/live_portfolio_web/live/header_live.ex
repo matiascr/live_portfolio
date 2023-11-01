@@ -18,7 +18,11 @@ defmodule LivePortfolioWeb.HeaderLive do
     [name, surname]
     |> Enum.join(" ")
     |> String.graphemes()
-    |> Enum.filter(&(&1 == String.upcase(&1) and &1 != " "))
+    |> Enum.filter(&is_initial/1)
     |> List.to_string()
+  end
+
+  defp is_initial(letter) do
+    letter == String.upcase(letter) and letter != " "
   end
 end

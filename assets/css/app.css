@@ -3,3 +3,28 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alumni+Sans&display=swap");
+
+h1 {
+    font-weight: 700;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    /* font-family: 'DM Mono', monospace */
+}
+
+h5 {
+    font-weight: lighter;
+    font-size: large;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+}
+
+#entry > p {
+    font-weight: light;
+    font-size: medium;
+}
+
+#date_range {
+    font-family: "DM Mono", monospace;
+}
