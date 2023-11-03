@@ -1,31 +1,15 @@
 # LivePortfolio
 
-### A customizable Portfolio in liveview.
+### A customizable Portfolio in Phoenix Liveview.
+
+This is a personal project to get to grips with Phoenix Liveview and PSQL. It is intentionally overengineered for a website that currently shows text.
 
 Features:
-  - [ ] Content Cards
-  - [ ] Attached to database
+  - [x] Attached to database
   - [ ] Created from JSON
-  - [ ] Export to JSON
+  - [ ] Filter cards
   - [ ] Searchable
   - [ ] Reactive search
-  - [ ] Live update
-
----
-
-To start your Phoenix server:
-
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
-
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+  - [x] Live update
+  - [ ] Display images
+  - [ ] To document (txt, pdf?)
