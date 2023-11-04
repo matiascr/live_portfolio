@@ -5,6 +5,7 @@ defmodule LivePortfolioWeb.AchievementComponent do
 
   attr :title, :string
   attr :description, :string
+  attr :skills, :map
   attr :references, :list
   attr :date, :string
 
@@ -22,10 +23,15 @@ defmodule LivePortfolioWeb.AchievementComponent do
           > <%= @date %>
         </p>
       <% end %>
-      <div>
-        <%= for ref <- @references do %>
-          <UI.reference title={ref.title} link={ref.link} />
-        <% end %>
+      <div id="tags" class="flex">
+        <div>
+          <%= for skill <- @skills do %>
+            <UI.skill title={skill.title} />
+          <% end %>
+          <%= for reference <- @references do %>
+            <UI.reference title={reference.title} link={reference.link} />
+          <% end %>
+        </div>
       </div>
     </div>
     """

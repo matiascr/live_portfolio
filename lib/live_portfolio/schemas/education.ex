@@ -8,7 +8,7 @@ defmodule LivePortfolio.Education do
   @type t :: %__MODULE__{
           courses: list(String.t()),
           date_end: Date.t(),
-          date_start: Date.t(),
+          date: Date.t(),
           description: String.t(),
           institution: String.t(),
           title: String.t(),
@@ -20,7 +20,7 @@ defmodule LivePortfolio.Education do
   schema "educations" do
     field :courses, {:array, :string}
     field :date_end, :date
-    field :date_start, :date
+    field :date, :date
     field :description, :string
     field :institution, :string
     field :title, :string
@@ -38,7 +38,7 @@ defmodule LivePortfolio.Education do
     |> cast(attrs, [
       :courses,
       :date_end,
-      :date_start,
+      :date,
       :description,
       :institution,
       :title,
@@ -49,7 +49,7 @@ defmodule LivePortfolio.Education do
     |> validate_required([
       :courses,
       :date_end,
-      :date_start,
+      :date,
       :description,
       :institution,
       :title,

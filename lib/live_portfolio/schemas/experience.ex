@@ -8,7 +8,7 @@ defmodule LivePortfolio.Experience do
   @type t :: %__MODULE__{
           company: String.t(),
           date_end: Date.t(),
-          date_start: Date.t(),
+          date: Date.t(),
           description: String.t(),
           title: String.t(),
           images: list(Image.t()),
@@ -19,7 +19,7 @@ defmodule LivePortfolio.Experience do
   schema "experiences" do
     field :company, :string
     field :date_end, :date
-    field :date_start, :date
+    field :date, :date
     field :description, :string
     field :title, :string
 
@@ -37,7 +37,7 @@ defmodule LivePortfolio.Experience do
       :title,
       :company,
       :description,
-      :date_start,
+      :date,
       :date_end,
       :images,
       :references,
@@ -47,7 +47,7 @@ defmodule LivePortfolio.Experience do
       :title,
       :company,
       :description,
-      :date_start,
+      :date,
       :date_end,
       :images,
       :references,

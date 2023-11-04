@@ -15,8 +15,7 @@ defmodule LivePortfolioWeb.HeaderLive do
   end
 
   def abbreviate_full_name(name, surname) do
-    [name, surname]
-    |> Enum.join(" ")
+    (name <> surname)
     |> String.graphemes()
     |> Enum.filter(&is_initial/1)
     |> List.to_string()

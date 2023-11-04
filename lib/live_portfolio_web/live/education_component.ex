@@ -6,7 +6,7 @@ defmodule LivePortfolioWeb.EducationComponent do
   attr :title, :string
   attr :description, :string
   attr :references, :list
-  attr :date_start, :string
+  attr :date, :string
   attr :date_end, :string
 
   def render(assigns) do

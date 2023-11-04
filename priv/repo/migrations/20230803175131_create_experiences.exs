@@ -6,7 +6,7 @@ defmodule LivePortfolio.Repo.Migrations.CreateExperiences do
       add :title, :string
       add :company, :string
       add :description, :string
-      add :date_start, :date
+      add :date, :date
       add :date_end, :date
 
       timestamps()

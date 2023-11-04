@@ -8,9 +8,19 @@ defmodule LivePortfolioWeb.UI do
     ~H"""
     <a href={@link}>
       <span class="flex justify-items-stretch text-xs text-white font-medium inline-flex items-center px-1.5 py-0.5 rounded mr-2 backdrop-blur-xl bg-gray-700/50">
-        # <%= @title %>
+        @ <%= @title %>
       </span>
     </a>
+    """
+  end
+
+  attr :title, :string, required: true
+
+  def skill(assigns) do
+    ~H"""
+    <div class="flex justify-items-stretch text-xs text-white font-medium inline-flex items-center px-1.5 py-0.5 rounded mr-2 backdrop-blur-xl bg-gray-700/50">
+      # <%= @title %>
+    </div>
     """
   end
 end
