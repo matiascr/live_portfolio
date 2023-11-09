@@ -7,7 +7,7 @@ defmodule LivePortfolioWeb.UI do
   def reference(assigns) do
     ~H"""
     <a href={@link}>
-      <span class="flex justify-items-stretch text-xs text-white font-medium inline-flex items-center px-1.5 py-0.5 rounded mr-2 backdrop-blur-xl bg-gray-700/50">
+      <span class="flex justify-items-stretch text-xs text-white font-medium inline-flex items-center px-2 py-0.5 rounded-full mr-2 backdrop-blur-xl bg-gray-500/75">
         @ <%= @title %>
       </span>
     </a>
@@ -18,9 +18,9 @@ defmodule LivePortfolioWeb.UI do
 
   def skill(assigns) do
     ~H"""
-    <div class="flex justify-items-stretch text-xs text-white font-medium inline-flex items-center px-1.5 py-0.5 rounded mr-2 backdrop-blur-xl bg-gray-700/50">
+    <span class="flex justify-items-stretch text-xs text-white font-medium inline-flex items-center px-2 py-0.5 rounded-full mr-2 backdrop-blur-xl bg-gray-500/75">
       # <%= @title %>
-    </div>
+    </span>
     """
   end
 end

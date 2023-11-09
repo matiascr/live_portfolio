@@ -30,10 +30,10 @@ defmodule LivePortfolioWeb.Layout do
   def footer(assigns) do
     ~H"""
     <footer class="
-      bg-white border-gray-200 px-4 py-2.5
+      bg-white border-gray-500/75 px-4 py-2.5
       block py-2 pr-4 pl-3
-      text-gray-700
-      border-gray-100
+      text-gray-500/75
+      border-gray-500/75
       ">
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-lg">
         <%= if @full_name != nil do %>

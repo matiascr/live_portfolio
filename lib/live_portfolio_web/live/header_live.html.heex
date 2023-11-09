@@ -1,32 +1,29 @@
-<nav class="bg-white border-gray-200 py-3.5">
-  <div class="
-    flex flex-wrap justify-between items-center
-    mx-auto max-w-screen-lg
-    md:py-8
-    lg:py-16
-  ">
-    <a
-      href="/"
-      class="flex-col items-center self-center text-3xl font-semibold whitespace-nowrap px-3.5 md:text-3xl lg:text-3xl"
-    >
-      <h1 class="sm:hidden"><%= @title_name_abbr %></h1>
-      <h1 class="hidden sm:block"><%= @title_name %></h1>
-    </a>
-    <div class="flex lg:flex-col">
-      <%= for ref <- @profile.references do %>
-        <a
-          href={ref.link}
-          class="
-            block py-2 pr-4 pl-3
-            text-gray-700
-            border-gray-100
-            hover:underline
-            lg:py-1
-          "
-        >
-          <%= ref.title %>
-        </a>
-      <% end %>
-    </div>
+<nav class="flex flex-wrap justify-between items-center
+            mx-auto max-w-screen-lg
+            pt-4
+            py-3.5
+            md:py-8
+            lg:py-16">
+  <a
+    href="/"
+    class="flex-col items-center self-center text-3xl font-semibold whitespace-nowrap px-2 md:text-3xl lg:text-3xl"
+  >
+    <h1 class="sm:hidden"><%= @title_name_abbr %></h1>
+    <h1 class="hidden sm:block"><%= @title_name %></h1>
+  </a>
+  <div class="flex lg:flex-col">
+    <%= for ref <- @profile.references do %>
+      <a
+        href={ref.link}
+        class="
+          block py-2 px-2
+        text-gray-500/75 font-semibold
+          hover:underline
+          lg:py-1
+        "
+      >
+        <%= ref.title %>
+      </a>
+    <% end %>
   </div>
 </nav>
