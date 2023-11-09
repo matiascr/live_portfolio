@@ -1,5 +1,8 @@
 defmodule LivePortfolioWeb.TimelineLive do
   use Phoenix.LiveView
+
+  import Ecto.Query, only: [from: 2]
+
   alias LivePortfolio.{Achievement, Education, Experience}
   alias LivePortfolio.Repo
 
@@ -8,8 +11,14 @@ defmodule LivePortfolioWeb.TimelineLive do
   def mount(_params, _session, socket) do
     entries =
       [Achievement, Education, Experience]
-      |> Enum.map(&(Repo.all(&1) |> Repo.preload(:references)))
+      |> Enum.map(
+        &(from(q in &1, order_by: q.date)
+          |> Repo.all()
+          |> Repo.preload([:references, :skills]))
+      )
       |> List.flatten()
+      |> Enum.sort(&(Date.compare(&1.date, &2.date) == :gt))
+      |> dbg
 
     {:ok, assign(socket, entries: entries)}
   end
@@ -29,6 +38,7 @@ defmodule LivePortfolioWeb.TimelineLive do
                 description={e.description}
                 references={e.references}
                 date={parse_date(e.date)}
+                skills={e.skills}
               />
             <% %Education{} -> %>
               <.live_component
@@ -38,7 +48,7 @@ defmodule LivePortfolioWeb.TimelineLive do
                 title={e.title}
                 description={e.description}
                 references={e.references}
-                date_start={parse_date(e.date_start)}
+                date={parse_date(e.date)}
                 date_end={parse_date(e.date_end)}
               />
             <% %Experience{} -> %>
@@ -49,7 +59,7 @@ defmodule LivePortfolioWeb.TimelineLive do
                 title={e.title}
                 description={e.description}
                 references={e.references}
-                date_start={parse_date(e.date_start)}
+                date={parse_date(e.date)}
                 date_end={parse_date(e.date_end)}
               />
           <% end %>
