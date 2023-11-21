@@ -18,7 +18,6 @@ defmodule LivePortfolioWeb.TimelineLive do
       )
       |> List.flatten()
       |> Enum.sort(&(Date.compare(&1.date, &2.date) == :gt))
-      |> dbg
 
     {:ok, assign(socket, entries: entries)}
   end
@@ -28,50 +27,26 @@ defmodule LivePortfolioWeb.TimelineLive do
     <ul class="flex flex-col justify-center items-center">
       <%= for e <- @entries do %>
         <li class="w-full">
-          <%= case e do %>
-            <% %Achievement{} -> %>
-              <.live_component
-                module={LivePortfolioWeb.AchievementComponent}
-                id={e.title}
-                entry={e}
-                title={e.title}
-                description={e.description}
-                references={e.references}
-                date={parse_date(e.date)}
-                skills={e.skills}
-              />
-            <% %Education{} -> %>
-              <.live_component
-                module={LivePortfolioWeb.EducationComponent}
-                id={e.title}
-                entry={e}
-                title={e.title}
-                description={e.description}
-                references={e.references}
-                date={parse_date(e.date)}
-                date_end={parse_date(e.date_end)}
-              />
-            <% %Experience{} -> %>
-              <.live_component
-                module={LivePortfolioWeb.ExperienceComponent}
-                id={e.title}
-                entry={e}
-                title={e.title}
-                description={e.description}
-                references={e.references}
-                date={parse_date(e.date)}
-                date_end={parse_date(e.date_end)}
-              />
-          <% end %>
+          <.live_component
+            module={LivePortfolioWeb.EntryComponent}
+            id={e.title}
+            entry={e}
+            title={e.title}
+            description={e.description}
+            references={e.references}
+            skills={e.skills}
+            date={format_date(e)}
+          />
         </li>
       <% end %>
     </ul>
     """
   end
 
-  defp parse_date(nil), do: nil
+  def format_date(%{date: d, date_end: nil}), do: parse_date(d)
+  def format_date(%{date: d, date_end: de}), do: "#{parse_date(d)} - #{parse_date(de)}"
+  def format_date(%{date: d}), do: parse_date(d)
 
-  defp parse_date(date) do
-    Calendar.strftime(date, @date_format)
-  end
+  defp parse_date(nil), do: nil
+  defp parse_date(date), do: Calendar.strftime(date, @date_format)
 end
